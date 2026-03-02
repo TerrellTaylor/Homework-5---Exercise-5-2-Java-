@@ -23,9 +23,15 @@ public class GuessNumberApp {
 
         Scanner sc = new Scanner(System.in);            
         int count = 1;
+        int guess = 0;
         while (true) {
             System.out.print("Your guess: ");
-            int guess = Integer.parseInt(sc.nextLine());
+            try {
+                guess = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid guess. Try again.");
+                continue;
+            }
             
             if (guess < 1 || guess > LIMIT) {
                 System.out.println("Invalid guess. Try again.");
